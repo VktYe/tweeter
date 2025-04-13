@@ -11,14 +11,18 @@ html {
 }
 
 /*
- * Global layout stuff
- */
+* Global layout stuff
+*/
 
 body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 300;
+  
 }
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
