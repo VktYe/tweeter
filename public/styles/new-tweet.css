@@ -16,6 +16,7 @@
   border: none;
   border-bottom: 2px solid;
   margin-bottom: 15px;
+  padding: 10px;
   font-size: large;
 }
 .tweet-submit {
@@ -30,4 +31,8 @@
   background-color: #4056A1;
   color: #FFFFFF;
   border: none;
+}
+
+.counter.error {
+  color: red;
 }
