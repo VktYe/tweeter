@@ -1,9 +1,9 @@
-header {
+.profile {
   width: 100%;
   background-color: rgb(232, 152, 5);
   background-image: url(../images/arabesque.png);
   display: flex;
-  align-items: center ;
+  align-items: center;
   justify-content: center;
 }
 
