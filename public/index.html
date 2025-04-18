@@ -15,13 +15,10 @@
 
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
     <link rel="stylesheet" href="/styles/nav.css" type="text/css"/>
-
     <link rel="stylesheet" href="/styles/header.css" type="text/css"/>
-
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css">
-
+    <link rel="stylesheet" href="/styles/tweet.css" type="text/css"/>
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -41,11 +38,9 @@
       </div>    
     </nav>
     
-    <header>
-      <div class="avatar-name">
-      <div class="avatar">
+    <header class="profile">
+      <div>
         <img src="/images/profile-hex.png">
-      </div>
       <br>
       <div class="user-name">
         <h2>Your Name</h2>
@@ -65,6 +60,30 @@
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+        <section class="tweet-conainer">
+          <header>
+            <div>
+              <img
+              src="/images/tweet-avatar.png"/>
+              <h3>Name</h3>
+              <div>
+                <span>@SirIsaac</span>
+              </div>
+            </div>
+          </header>
+          <article>The classic Latin passage that just never gets old, enjoy as much (or as little) lorem ipsum as you can handle with our easy to use filler text generator.</article>
+          <footer>
+            <div>
+              <span>10 minutes ago</span>
+            <div>
+              <i class="fa-solid fa-bookmark"></i>
+              <i class="fa-solid fa-retweet"></i>
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            </div>
+          </footer>
+
+        </section>
       </section>
      
     </main>
