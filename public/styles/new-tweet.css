@@ -33,6 +33,6 @@
   border: none;
 }
 
-.counter.error {
+.counter.negative-count {
   color: red;
 }
