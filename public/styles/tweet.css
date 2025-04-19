@@ -1,4 +1,4 @@
-.tweet-container {
+.tweet {
   margin-top: 15px;
   width: 100%;
   border: 5px solid;
@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-.tweet-container:hover{
+.tweet:hover{
   box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
 }
 .user-info {
