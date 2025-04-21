@@ -28,12 +28,9 @@ $(document).ready(function() { //
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $('#tweets-container').append($tweet);
-      };
-      //takes in an array of tweet objects
-      //calls createTweetElement for each tweet
-      //then appends each one to the #tweet-container
+      $('#tweets-container').prepend($tweet);
     };
+  };
 
   const createTweetElement = function(tweet) {
     const $tweet = (`
@@ -43,7 +40,7 @@ $(document).ready(function() { //
             <img src="${tweet.user.avatars}"/>
             <span>${tweet.user.name}</span>
           </div>
-            <span>${tweet.user.handle}</span> 
+          <span>${tweet.user.handle}</span> 
         </header>
         <article>${tweet.content.text}</article>
         <footer>
@@ -62,9 +59,7 @@ $(document).ready(function() { //
       return $tweet;  
     };
 
-
-  renderTweets(data);
-    
+  renderTweets(data);  
 });
 
 
