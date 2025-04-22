@@ -4,16 +4,17 @@ $(document).ready(function() {
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       $('#tweets-container').prepend($tweet);
-    };
+    }
   };
 
   // fetch tweets
   const loadTweets = function() {
     $.ajax("/api/tweets", { method: 'GET' })
-     .then(function(tweets) {
-       console.log('Success: ', tweets);
-       renderTweets(tweets);
-     });
+      .then(function(tweets) {
+        console.log('Success: ', tweets);
+        $('#tweets-container').empty();
+        renderTweets(tweets);
+      });
   };
 
 
@@ -41,8 +42,8 @@ $(document).ready(function() {
       </section>
       `);
 
-      return $tweet;  
-    };
+    return $tweet;
+  };
   
   // Form Submition
   $(".tweet-form").on("submit", function(event) {
@@ -53,29 +54,36 @@ $(document).ready(function() {
     // Form validation
     const $textArea = $(this).find("#tweet-text");
     const tweetText = $textArea.val().trim();
+    const $counter = $(this).closest("form").find(".counter");
 
     if (!tweetText) {
       alert("Tweet cannot be empty!");
       return;
-    };
+    }
 
-    if(tweetText.length > 140) {
-      alert("Tweet exceeds the limit.")
+    if (tweetText.length > 140) {
+      alert("Tweet exceeds the limit.");
       return;
     }
 
-  // Serialize the form data and send it to the server as a query string.
+    // Serialize the form data and send it to the server as a query string.
     $.ajax({
       url: "/api/tweets",
       method: "POST",
       data: $(this).serialize(),
-      success: function(response) {
-        console.log(response);
+      success: function() {
+        //
+        $textArea.val("");
+
+        // Reset the counter
+        $counter.text(140).removeClass("negative-count");
+
+        loadTweets();
         
       }
     });
   });
- loadTweets();
+  loadTweets();
 });
 
 
