@@ -7,6 +7,16 @@ $(document).ready(function() {
     };
   };
 
+  // fetch tweets
+  const loadTweets = function() {
+    $.ajax("/api/tweets", { method: 'GET' })
+     .then(function(tweets) {
+       console.log('Success: ', tweets);
+       renderTweets(tweets);
+     });
+  };
+
+
   const createTweetElement = function(tweet) {
     const $tweet = (`
       <section class="tweet">
@@ -37,7 +47,22 @@ $(document).ready(function() {
   // Form Submition
   $(".tweet-form").on("submit", function(event) {
     event.preventDefault();
-    console.log("Form submitted, but not reload")
+    console.log("Form submitted, but not reload");
+    
+
+    // Form validation
+    const $textArea = $(this).find("#tweet-text");
+    const tweetText = $textArea.val().trim();
+
+    if (!tweetText) {
+      alert("Tweet cannot be empty!");
+      return;
+    };
+
+    if(tweetText.length > 140) {
+      alert("Tweet exceeds the limit.")
+      return;
+    }
 
   // Serialize the form data and send it to the server as a query string.
     $.ajax({
@@ -46,22 +71,11 @@ $(document).ready(function() {
       data: $(this).serialize(),
       success: function(response) {
         console.log(response);
+        
       }
     });
   });
-
-  const loadTweets = function() {
-    $.ajax("/api/tweets", { method: 'GET' })
-     .then(function(tweets) {
-       console.log('Success: ', tweets);
-       renderTweets(tweets);
-     });
-  };
-
-  loadTweets();
- 
-  
-  const serializedData = $(this).serialize();
+ loadTweets();
 });
 
 
