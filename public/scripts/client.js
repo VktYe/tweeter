@@ -1,4 +1,4 @@
-$(document).ready(function() { //
+$(document).ready(function() {
 
   const data = [
     {
@@ -59,7 +59,25 @@ $(document).ready(function() { //
       return $tweet;  
     };
 
-  renderTweets(data);  
+  renderTweets(data); 
+  
+  // Form Submition
+  $(".tweet-form").on("submit", function(event) {
+    event.preventDefault();
+    console.log("Form submitted, but not reload")
+
+  // Serialize the form data and send it to the server as a query string.
+    $.ajax({
+      url: "/api/tweets",
+      method: "POST",
+      data: $(this).serialize(),
+      success: function(response) {
+        console.log(response);
+      }
+    });
+  });
+  
+  const serializedData = $(this).serialize();
 });
 
 
