@@ -24,6 +24,7 @@
   }
 }
 
+/* Navigation bar for tablets and phones */
 @media (max-width: 1024px) {
   nav {
     
