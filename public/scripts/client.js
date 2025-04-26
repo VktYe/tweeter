@@ -98,6 +98,13 @@ $(document).ready(function() {
       }
     });
   });
+
+  // Toggle new tweet form on compose button click
+  $('.compose-button').on('click', function() {
+    $('.new-tweet').slideToggle('slow');
+    $(this).toggleClass('end-animation');
+  });
+
  loadTweets();
 });
 
