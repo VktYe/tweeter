@@ -21,12 +21,13 @@
   align-items: flex-start;
   flex-wrap: wrap;
   margin-top: 2em;
+  color: #545149;;
 }
 #tweet-text {
   width: 100%;
   background-color: inherit;
   border: none;
-  border-bottom: 5px solid;
+  border-bottom: 5px solid #545149;;
   margin-bottom: 15px;
   padding: 10px;
   font-size: large;
