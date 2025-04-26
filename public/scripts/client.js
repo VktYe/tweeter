@@ -63,13 +63,18 @@ $(document).ready(function() {
     const $counter = $(this).closest("form").find(".counter");
 
     // Stop submition if:
+    $("#error").slideUp(); // always hide error element
+
     if (!tweetText) {
-      alert("Tweet cannot be empty!");
+      $(".error-text").text("Tweet cannot be empty.")
+      $("#error").slideDown(); 
       return;  
     };
+    
 
     if(tweetText.length > 140) {
-      alert("Tweet exceeds the limit.")
+      $(".error-text").text("Tweet exceeds 140 characters limit.")
+      $("#error").slideDown();
       return;
     }
 
@@ -84,6 +89,10 @@ $(document).ready(function() {
         // Reset the counter 
         $counter.text(140).removeClass("negative-count");
         loadTweets();    
+      }, 
+      error: function() {
+        $(".error-text").text("Failed to submit tweet. Please try again.");
+        $("#error").slideDown();
       }
     });
   });
