@@ -1,7 +1,6 @@
 .new-tweet {
   display: flex;
-  flex-direction: column;
-  
+  flex-direction: column; 
 }
 
 #error {
@@ -10,8 +9,7 @@
   padding: 15px;
   border: 5px solid red; 
   margin-top: 2em;
-  color: red;
-  
+  color: red; 
 }
 
 .tweet-form {
@@ -23,6 +21,7 @@
   margin-top: 2em;
   color: #545149;;
 }
+
 #tweet-text {
   width: 100%;
   background-color: inherit;
@@ -32,6 +31,7 @@
   padding: 10px;
   font-size: large;
 }
+
 .tweet-submit {
   width: 100%;
   display: flex;

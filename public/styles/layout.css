@@ -21,14 +21,15 @@ body {
   font-family: "Source Sans 3", sans-serif;
   padding-top: 120px;
 }
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
+
+ /* Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
  main {
   background-color: inherit;
   width: 90%;
   margin: 0 auto;
+  align-self: center;
  }
 
  .layout {
