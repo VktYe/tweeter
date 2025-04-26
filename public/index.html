@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css"/>
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css">
     <link rel="stylesheet" href="/styles/tweet.css" type="text/css"/>
+    <link rel="stylesheet" href="/styles/responsive.css" type="text/css"/>
     
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -34,20 +35,19 @@
   <body>
     <nav>
       <span class="nav-title">tweeter</span>
-  
-      <div class="new-tweet">
+
+  <button class="compose-button" >
+      <div class="compose">
         <span><strong>Write</strong> a new tweet</span>
         <i class="fa fa-angle-double-down"></i> <!--Font Awesome lib-->
       </div>    
+    </button>
     </nav>
     
     <div class="layout">
       <header class="profile">
-        
-          <img src="/images/profile-hex.png">
-        
+          <img src="/images/profile-hex.png"> 
           <h2><strong>Amy</strong> Mansell</h2>
-        
       </header>
 
       <!-- Page-specific (main) content here -->
