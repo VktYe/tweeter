@@ -30,3 +30,32 @@ body {
   width: 90%;
   margin: 0 auto;
  }
+
+ .layout {
+  display: block; /* mobile default*/
+}
+
+/*
+ * Desktop styles (1024px and above)
+ */
+@media (min-width: 1024px) {
+  .layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10%;     
+    margin: 15px;
+    padding: 40px 20px;
+  }
+
+  header.profile {
+    width: 25%;
+    text-align: center;
+    position: sticky;
+    top: 120px; 
+  }
+
+  main.container {
+    width: 65%;
+  }
+}
