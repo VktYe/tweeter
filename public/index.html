@@ -41,34 +41,34 @@
       </div>    
     </nav>
     
-    <header class="profile">
-      <div>
-        <img src="/images/profile-hex.png">
-      </div>
-      <br>
-      <div class="user-name">
-        <h2>Your Name</h2>
-      </div>
-    </header>
+    <div class="layout">
+      <header class="profile">
+        
+          <img src="/images/profile-hex.png">
+        
+          <h2><strong>Amy</strong> Mansell</h2>
+        
+      </header>
 
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet">
-        <div id="error" style="display: none;">
-          <i class="fas fa-exclamation-triangle"></i>
-          <span class="error-text"></span>
-          <i class="fas fa-exclamation-triangle"></i>
-        </div>
-        <form class="tweet-form" method="POST" action="/api/tweets">
-          <label for="tweet-text"><strong>What are you humming about?</strong></label>
-          <textarea name="text" id="tweet-text"></textarea>
-          <div class="tweet-submit">
-            <button class="tweet-button" type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
+      <!-- Page-specific (main) content here -->
+      <main class="container">
+        <section class="new-tweet">
+          <div id="error" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span class="error-text"></span>
+            <i class="fas fa-exclamation-triangle"></i>
           </div>
-        </form>
-      </section>
-      <section id="tweets-container"></section>
-    </main>
+          <form class="tweet-form" method="POST" action="/api/tweets">
+            <label for="tweet-text"><strong>What are you humming about?</strong></label>
+            <textarea name="text" id="tweet-text"></textarea>
+            <div class="tweet-submit">
+              <button class="tweet-button" type="submit">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text">140</output>
+            </div>
+          </form>
+        </section>
+        <section id="tweets-container"></section>
+      </main>
+    </div>
   </body>
 </html>
