@@ -54,7 +54,11 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
+        <div id="error" style="display: none;">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span class="error-text"></span>
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
         <form class="tweet-form" method="POST" action="/api/tweets">
           <label for="tweet-text"><strong>What are you humming about?</strong></label>
           <textarea name="text" id="tweet-text"></textarea>
@@ -62,7 +66,7 @@
             <button class="tweet-button" type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
-        </fo rm>
+        </form>
       </section>
       <section id="tweets-container"></section>
     </main>
