@@ -1,28 +1,27 @@
 $(document).ready(function() {
-  // XSS preventing 
+  // XSS preventing
   const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
-  }
+  };
   
 
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       $('#tweets-container').prepend($tweet);
-    };
+    }
   };
 
 
   // fetch tweets
   const loadTweets = function() {
     $.ajax("/api/tweets", { method: 'GET' })
-     .then(function(tweets) {
-       console.log('Success: ', tweets);
-       $('#tweets-container').empty(); // clear tweets--container so tweets don't duplicate after new tweet submitted
-       renderTweets(tweets);
-     });
+      .then(function(tweets) {
+        $('#tweets-container').empty(); // clear tweets--container so tweets don't duplicate after new tweet submitted
+        renderTweets(tweets);
+      });
   };
 
 
@@ -34,7 +33,7 @@ $(document).ready(function() {
             <img src="${tweet.user.avatars}"/>
             <span>${tweet.user.name}</span>
           </div>
-          <span>${tweet.user.handle}</span> 
+          <span class="handle">${tweet.user.handle}</span> 
         </header>
         <article>${escape(tweet.content.text)}</article>
         <footer>
@@ -50,14 +49,13 @@ $(document).ready(function() {
       </section>
       `);
 
-      return $tweet;  
-    };
+    return $tweet;
+  };
   
 
   // Form Submition
   $(".tweet-form").on("submit", function(event) {
     event.preventDefault();
-    console.log("Form submitted, but not reload");
     
     // Form validation
     const $textArea = $(this).find("#tweet-text");
@@ -68,19 +66,18 @@ $(document).ready(function() {
     $("#error").slideUp(); // always hide error element
 
     if (!tweetText) {
-      $(".error-text").text("Tweet cannot be empty.")
-      $("#error").slideDown(); 
-      return;  
-    };
+      $(".error-text").text("Tweet cannot be empty.");
+      $("#error").slideDown();
+      return;
+    }
     
-
-    if(tweetText.length > 140) {
-      $(".error-text").text("Tweet exceeds 140 characters limit.")
+    if (tweetText.length > 140) {
+      $(".error-text").text("Tweet exceeds 140 characters limit.");
       $("#error").slideDown();
       return;
     }
 
-  // Serialize the form data and send it to the server as a query string.
+    // Serialize the form data and send it to the server as a query string.
     $.ajax({
       url: "/api/tweets",
       method: "POST",
@@ -88,10 +85,10 @@ $(document).ready(function() {
       success: function() {
         // Clear text area
         $textArea.val("");
-        // Reset the counter 
+        // Reset the counter
         $counter.text(140).removeClass("negative-count");
-        loadTweets();    
-      }, 
+        loadTweets();
+      },
       error: function() {
         $(".error-text").text("Failed to submit tweet. Please try again.");
         $("#error").slideDown();
@@ -109,7 +106,7 @@ $(document).ready(function() {
     $(this).toggleClass("end-animation");
   });
 
- loadTweets();
+  loadTweets();
 });
 
 
