@@ -6,12 +6,14 @@ $(document).ready(function() {
     return div.innerHTML;
   }
   
+
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       $('#tweets-container').prepend($tweet);
     };
   };
+
 
   // fetch tweets
   const loadTweets = function() {
@@ -51,12 +53,12 @@ $(document).ready(function() {
       return $tweet;  
     };
   
+
   // Form Submition
   $(".tweet-form").on("submit", function(event) {
     event.preventDefault();
     console.log("Form submitted, but not reload");
     
-
     // Form validation
     const $textArea = $(this).find("#tweet-text");
     const tweetText = $textArea.val().trim();
