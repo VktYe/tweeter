@@ -16,10 +16,45 @@ nav {
   font-weight: 400;
 }
 
-.new-tweet {
+.compose-button {
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.compose-button:hover {
+  transform: scale(1.05);
+}
+
+.compose-button:active {
+  transform: scale(0.95);
+}
+
+.compose {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: "Source Sans 3", sans-serif;
   font-weight: 300;
+  color: #FFFFFF;
 }
+
+/* Up and Down animation for arrow icon */
+.compose i {
+  color: red;
+  display: inline-block;
+  padding: 10px;
+  animation: bounce 1.5s ease-in-out infinite;
+}
+  
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
