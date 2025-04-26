@@ -6,7 +6,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 2em;
   padding-top: 1em;
   color: white;
 }
@@ -17,10 +16,5 @@
 .profile h2 strong {
   font-weight: 600;
 }
-
-/* .user-name {
-  display: flex;
-  justify-self: center;
-} */
 
 
