@@ -100,9 +100,13 @@ $(document).ready(function() {
   });
 
   // Toggle new tweet form on compose button click
-  $('.compose-button').on('click', function() {
-    $('.new-tweet').slideToggle('slow');
-    $(this).toggleClass('end-animation');
+  $(".compose-button").on("click", function() {
+    $(".new-tweet").slideToggle("slow", function() {
+      if ($(this).is(":visible")) {
+        $("textarea").focus();
+      }
+    });
+    $(this).toggleClass("end-animation");
   });
 
  loadTweets();
