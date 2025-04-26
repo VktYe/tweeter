@@ -1,20 +1,26 @@
 $(document).ready(function() {
+  // XSS preventing 
+  const escape = function(str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
   
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       $('#tweets-container').prepend($tweet);
-    }
+    };
   };
 
   // fetch tweets
   const loadTweets = function() {
     $.ajax("/api/tweets", { method: 'GET' })
-      .then(function(tweets) {
-        console.log('Success: ', tweets);
-        $('#tweets-container').empty();
-        renderTweets(tweets);
-      });
+     .then(function(tweets) {
+       console.log('Success: ', tweets);
+       $('#tweets-container').empty(); // clear tweets--container so tweets don't duplicate after new tweet submitted
+       renderTweets(tweets);
+     });
   };
 
 
@@ -28,7 +34,7 @@ $(document).ready(function() {
           </div>
           <span>${tweet.user.handle}</span> 
         </header>
-        <article>${tweet.content.text}</article>
+        <article>${escape(tweet.content.text)}</article>
         <footer>
           <div>
             <span>${timeago.format(tweet.created_at)}</span>
@@ -42,8 +48,8 @@ $(document).ready(function() {
       </section>
       `);
 
-    return $tweet;
-  };
+      return $tweet;  
+    };
   
   // Form Submition
   $(".tweet-form").on("submit", function(event) {
@@ -56,34 +62,32 @@ $(document).ready(function() {
     const tweetText = $textArea.val().trim();
     const $counter = $(this).closest("form").find(".counter");
 
+    // Stop submition if:
     if (!tweetText) {
       alert("Tweet cannot be empty!");
+      return;  
+    };
+
+    if(tweetText.length > 140) {
+      alert("Tweet exceeds the limit.")
       return;
     }
 
-    if (tweetText.length > 140) {
-      alert("Tweet exceeds the limit.");
-      return;
-    }
-
-    // Serialize the form data and send it to the server as a query string.
+  // Serialize the form data and send it to the server as a query string.
     $.ajax({
       url: "/api/tweets",
       method: "POST",
       data: $(this).serialize(),
       success: function() {
-        //
+        // Clear text area
         $textArea.val("");
-
-        // Reset the counter
+        // Reset the counter 
         $counter.text(140).removeClass("negative-count");
-
-        loadTweets();
-        
+        loadTweets();    
       }
     });
   });
-  loadTweets();
+ loadTweets();
 });
 
 
